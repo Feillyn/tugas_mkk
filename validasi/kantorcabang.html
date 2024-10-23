@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Class Bank
+class Bank {
+    constructor(namaBank) {
+        this.namaBank = namaBank;
+        this.kantorCabang = [];  // Array untuk menyimpan daftar kantor cabang
+    }
+
+    // Method untuk menambahkan kantor cabang
+    tambahCabang(namaCabang) {
+        this.kantorCabang.push(namaCabang);
+        console.info(`Kantor cabang "${namaCabang}" berhasil ditambahkan.`);
+    }
+
+    // Method untuk menghapus kantor cabang
+    hapusCabang(namaCabang) {
+        const index = this.kantorCabang.indexOf(namaCabang);
+        if (index !== -1) {
+            this.kantorCabang.splice(index, 1);
+            console.info(`Kantor cabang "${namaCabang}" berhasil dihapus.`);
+        } else {
+            console.info(`Kantor cabang "${namaCabang}" tidak ditemukan.`);
+        }
+    }
+
+    // Method untuk menampilkan semua kantor cabang
+    tampilkanSemuaCabang() {
+        console.info(`Daftar Kantor Cabang ${this.namaBank}:`);
+        if (this.kantorCabang.length > 0) {
+            this.kantorCabang.forEach((cabang, index) => {
+                console.info(`${index + 1}. ${cabang}`);
+            });
+        } else {
+            console.info('Tidak ada kantor cabang.');
+        }
+    }
+}
+
+// Membuat instance dari class Bank
+const bankABC = new Bank('Bank BCA');
+
+// Menjalankan method-method yang ada
+bankABC.tambahCabang('Cabang Jakarta');
+bankABC.tambahCabang('Cabang Bandung');
+bankABC.tambahCabang('Cabang Surabaya');
+
+bankABC.tampilkanSemuaCabang(); // Menampilkan semua kantor cabang
+
+bankABC.hapusCabang('Cabang Bandung'); // Menghapus kantor cabang 'Cabang Bandung'
+
+bankABC.tampilkanSemuaCabang(); // Menampilkan daftar kantor cabang setelah penghapusan
+console.info(bankABC);
+    </script>
+</body>
+</html>

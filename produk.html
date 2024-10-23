@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Class Product
+class Product {
+    constructor(idProduk, name, price) {
+        this.idProduk = idProduk;
+        this.name = name;
+        this.price = price;
+    }
+
+    // Method untuk menghitung total harga berdasarkan kuantitas
+    hitungTotalHarga(kuantitas) {
+        return this.price * kuantitas;
+    }
+
+    // Method untuk menampilkan informasi produk
+    tampilkanNama() {
+        console.info(`Nama Produk: ${this.name}`);
+    }
+}
+
+// Subclass ElectronicProduct yang mewarisi kelas Product
+class ElectronicProduct extends Product {
+    constructor(idProduk, name, price, masaGaransi) {
+        super(idProduk, name, price);
+        this.masaGaransi = masaGaransi;
+    }
+
+    // Override metode hitungTotalHarga untuk menyertakan masa garansi
+    hitungTotalHarga(kuantitas) {
+        const totalHarga = super.hitungTotalHarga(kuantitas);
+        console.info(`Masa Garansi: ${this.masaGaransi} tahun`);
+        return totalHarga;
+    }
+
+    // Method untuk menampilkan nama produk elektronik
+    tampilkanNama() {
+        super.tampilkanNama();
+        console.info(`Masa Garansi: ${this.masaGaransi} tahun`);
+    }
+}
+
+// Membuat instance dari kelas ElectronicProduct
+const laptop = new ElectronicProduct(101, 'Laptop Gaming', 15000000, 2);
+
+// Menampilkan nama produk
+laptop.tampilkanNama();
+
+// Menghitung dan menampilkan total harga untuk 3 unit produk
+const totalHarga = laptop.hitungTotalHarga(3);
+console.info(`Total Harga untuk 3 unit: Rp${totalHarga}`);
+console.info(laptop);
+    </script>
+</body>
+</html>

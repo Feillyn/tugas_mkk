@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Class BankAccount
+class BankAccount {
+    constructor(nomorRekening, namaNasabah, saldoAwal) {
+        this.nomorRekening = nomorRekening;
+        this.namaNasabah = namaNasabah;
+        this.saldo = saldoAwal;
+    }
+
+    // Method untuk menyetor uang
+    setorUang(jumlah) {
+        this.saldo += jumlah;
+        console.info(`Setor berhasil. Saldo ${this.namaNasabah} sekarang: Rp${this.saldo}`);
+    }
+
+    // Method untuk menarik uang
+    tarikUang(jumlah) {
+        if (jumlah <= this.saldo) {
+            this.saldo -= jumlah;
+            console.info(`Tarik berhasil. Saldo ${this.namaNasabah} sekarang: Rp${this.saldo}`);
+        } else {
+            console.info(`Tarik gagal. Saldo tidak mencukupi.`);
+        }
+    }
+
+    // Method untuk mentransfer uang ke rekening lain
+    transferUang(jumlah, penerima) {
+        if (jumlah <= this.saldo) {
+            this.saldo -= jumlah;
+            penerima.saldo += jumlah;
+            console.info(`Transfer berhasil. Rp${jumlah} telah ditransfer ke rekening ${penerima.namaNasabah}.`);
+            console.info(`Saldo ${this.namaNasabah} sekarang: Rp${this.saldo}`);
+        } else {
+            console.info(`Transfer gagal. Saldo tidak mencukupi.`);
+        }
+    }
+
+    // Method untuk menampilkan informasi saldo
+    cekSaldo() {
+        console.info(`Saldo ${this.namaNasabah}: Rp${this.saldo}`);
+    }
+}
+
+// Membuat beberapa instance dari class BankAccount
+const rekening1 = new BankAccount(1234567890, 'Lamira Yunna', 5000000);
+const rekening2 = new BankAccount(9876543210, 'Silmi Faris', 3000000);
+
+// Melakukan operasi setor, tarik, dan transfer uang
+rekening1.setorUang(2000000);  // Lamira menyetor Rp2.000.000
+rekening1.tarikUang(1000000);  // Lamira menarik Rp1.000.000
+rekening1.transferUang(1500000, rekening2);  // Lamira mentransfer Rp1.500.000 ke Silmi
+
+// Menampilkan saldo akhir dari kedua rekening
+rekening1.cekSaldo();
+rekening2.cekSaldo();
+console.info(rekening1,rekening2);
+    </script>
+</body>
+</html>

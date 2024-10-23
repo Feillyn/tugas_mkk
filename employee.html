@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Class Employee
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Method to calculate yearly salary
+    hitungGajiTahunan() {
+        return this.salary * 12;
+    }
+
+    // Method to display employee details
+    displayDetails() {
+        console.info(`Nama Pegawai: ${this.name}`);
+        console.info(`Gaji Bulanan: Rp${this.salary}`);
+    }
+}
+
+// Subclass Manager that extends Employee
+class Manager extends Employee {
+    constructor(name, salary, departemen) {
+        super(name, salary);
+        this.departemen = departemen;
+    }
+
+    // Override method to calculate yearly salary with a 10% bonus
+    hitungGajiTahunan() {
+        const bonus = 0.1 * this.salary * 12;
+        return super.hitungGajiTahunan() + bonus;
+    }
+
+    // Method to display manager details
+    displayDetails() {
+        super.displayDetails();
+        console.info(`Manager: ${this.name}`);
+        console.info(`Departemen: ${this.departemen}`);
+        console.info(`Bonus (10% dari gaji pokok): 0.1`);
+    }
+}
+
+// Create two instances of Manager
+const manager1 = new Manager("Lamira Yunna", 10000000, "Marketing");
+const manager2 = new Manager("Silmi Faris", 15500000, "Marketing");
+
+// Display details and yearly salary for each manager
+manager1.displayDetails();
+console.log(`Gaji Tahunan: Rp${manager1.hitungGajiTahunan()}\n`);
+
+console.log(''); // Baris kosong untuk pemisah
+
+manager2.displayDetails();
+console.log(`Gaji Tahunan: Rp${manager2.hitungGajiTahunan()}`);
+console.info(manager1, manager2);
+    </script>
+</body>
+</html>

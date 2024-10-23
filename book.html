@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Book class
+class Book {
+  /**
+   * Constructor for Book class
+   * @param {string} title - Book title
+   * @param {string} author - Book author
+   * @param {number} years - Book publication years
+   */
+  constructor(title, author, years) {
+    this.title = title;
+    this.author = author;
+    this.years = years;
+  }
+
+  /**
+   * Method to display book details
+   */
+  bookDetails() {
+    console.info(`Title: ${this.title}`);
+    console.info(`Author: ${this.author}`);
+    console.info(`Years: ${this.years}`);
+  }
+}
+
+// Ebook subclass
+class Ebook extends Book {
+  /**
+   * Constructor for Ebook subclass
+   * @param {string} title - Book title
+   * @param {string} author - Book author
+   * @param {number} years - Book publication years
+   * @param {number} price - Book price
+   */
+  constructor(title, author, years, price) {
+    super(title, author, years);
+    this.price = price;
+  }
+
+  /**
+   * Override bookDetails method to display book prices
+   */
+  bookDetails() {
+    super.bookDetails();
+    console.info(`Price: $${this.price}`);
+  }
+}
+
+// Create an instance of Ebook class
+const ebook = new Ebook('The Definitive Guide', 'David Flanagan', 2011, 49.99);
+
+// Display ebook details
+ebook.bookDetails();
+console.info(ebook);
+
+    </script>
+</body>
+</html>
